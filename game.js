@@ -6,14 +6,13 @@ class Character {
     this.y = 600 / 2;
     this.width = 30;
     this.height = 30;
-    
+
     this.velX = 0;
     this.velY = 0;
     this.gravity = 1.0;
     this.jumpForce = -10;
     this.speed = 7;
   }
-
 
   // Character moves if player presses left or right arrows
   move() {
@@ -31,7 +30,7 @@ class Character {
     // https://chatgpt.com/share/67449514-b470-8001-b741-23c701b91a3b
 
     if (this.x > 400) {
-      this.x = 0; 
+      this.x = 0;
     } else if (this.x < 0) {
       this.x = 400;
     }
@@ -49,17 +48,30 @@ class Character {
     }
   }
 
-  
-
   draw() {
     fill(255, 0, 0);
     ellipse(this.x, this.y, this.width, this.height);
   }
 }
 
+class Platform {
+  constructor() {
+    this.x = random(1, 301);
+    this.y = 100;
+    this.width = 100;
+    this.height = 15;
+  }
+
+  draw() {
+    fill(255, 255, 0);
+    rect(this.x, this.y, this.width, this.height);
+  }
+}
+
 function setup() {
   createCanvas(400, 600);
   player = new Character();
+  astroid = new Platform();
 }
 
 function draw() {
@@ -67,4 +79,5 @@ function draw() {
   player.draw();
   player.move();
   player.update();
+  astroid.draw();
 }
