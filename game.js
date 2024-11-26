@@ -57,7 +57,7 @@ class Character {
 class Platform {
   constructor() {
     this.x = random(1, 301);
-    this.y = 100;
+    this.y = 320;
     this.width = 100;
     this.height = 15;
   }
@@ -80,4 +80,10 @@ function draw() {
   player.move();
   player.update();
   astroid.draw();
+
+  //jump when landing on platform
+
+  if (player.y + 25 > astroid.y) {
+    player.velY -= 15;
+  }
 }
