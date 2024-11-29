@@ -1,4 +1,4 @@
-//character class
+//Import modules
 
 import { Character } from "./character";
 import { Platform } from "./platform";
