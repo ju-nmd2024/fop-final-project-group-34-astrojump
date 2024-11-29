@@ -37,3 +37,6 @@ function draw() {
   }
 }
 window.draw = draw;
+
+//Next step; put platforms in place, when u can move from platform to platform, make the screen move
+//Everytime a platform goes out of the screen, remove them. Once a platform disappears, make a new one.
