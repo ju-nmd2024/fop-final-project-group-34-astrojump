@@ -85,12 +85,10 @@ function draw() {
 
   if (
     player.y + 25 > astroid.y &&
+    player.y < astroid.y + astroid.height &&
     player.x > astroid.x &&
     player.x < astroid.x + astroid.width
   ) {
     player.velY -= 15;
   }
-
-  console.log(player.x);
-  console.log(astroid.x);
 }
