@@ -1,13 +1,19 @@
 //Import modules
 
-import { Character } from "./character";
-import { Platform } from "./platform";
+import { Character } from "./character.js";
+import { Platform } from "./platform.js";
+
+let platforms = [];
 
 function setup() {
   createCanvas(400, 600);
   player = new Character();
   astroid = new Platform();
+  for (let i; i < 5; i++) {
+    platforms.push(new Platform(100 * i));
+  }
 }
+window.setup = setup;
 
 function draw() {
   background(255, 255, 255);
@@ -15,6 +21,9 @@ function draw() {
   player.move();
   player.update();
   astroid.draw();
+  for (let platform of platforms) {
+    platform.draw();
+  }
 
   //jump when landing on platform
 
@@ -27,3 +36,4 @@ function draw() {
     player.velY -= 15;
   }
 }
+window.draw = draw;

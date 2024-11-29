@@ -1,7 +1,7 @@
 export default class Platform {
-  constructor() {
+  constructor(y) {
     this.x = random(1, 301);
-    this.y = 400;
+    this.y = y;
     this.width = 100;
     this.height = 15;
   }
