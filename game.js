@@ -9,7 +9,7 @@ function setup() {
   createCanvas(400, 600);
   player = new Character();
   astroid = new Platform();
-  for (let i; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     platforms.push(new Platform(100 * i));
   }
 }
@@ -27,13 +27,18 @@ function draw() {
 
   //jump when landing on platform
 
-  if (
-    player.y + 25 > astroid.y &&
-    player.y < astroid.y + astroid.height &&
-    player.x > astroid.x &&
-    player.x < astroid.x + astroid.width
-  ) {
-    player.velY -= 15;
+  for (let platform of platforms) {
+    if (player.velY > 0) {
+      if (
+        player.y + 25 > platform.y &&
+        player.y < platform.y &&
+        player.x + 10 > platform.x &&
+        player.x < platform.x + platform.width
+      ) {
+        player.velY = -15;
+        console.log("collision detected");
+      }
+    }
   }
 }
 window.draw = draw;

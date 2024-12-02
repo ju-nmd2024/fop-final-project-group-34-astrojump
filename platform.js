@@ -2,7 +2,7 @@ export default class Platform {
   constructor(y) {
     this.x = random(1, 301);
     this.y = y;
-    this.width = 100;
+    this.width = 110;
     this.height = 15;
   }
 
