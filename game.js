@@ -2,7 +2,7 @@
 
 import { Character } from "./character.js";
 import { Platform } from "./platform.js";
-
+let highestY = 600;
 let platforms = [];
 
 function setup() {
@@ -23,10 +23,19 @@ window.setup = setup;
 
 function draw() {
   background(255, 255, 255);
+  
+  //Updates highest y to make camera follow character with translate
+  if (player.y < highestY) {
+    highestY = player.y;
+  }
+
+  translate(0, height / 2 - highestY);
+
   player.draw();
   player.move();
   player.update();
   astroid.draw();
+  
   for (let platform of platforms) {
     platform.draw();
   }
