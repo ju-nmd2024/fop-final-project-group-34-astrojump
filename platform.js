@@ -6,8 +6,6 @@ export default class Platform {
     this.height = 15;
   }
 
-  
-
   draw() {
     fill(random(1, 255), random(1, 255), random(1, 255));
     rect(this.x, this.y, this.width, this.height);

@@ -3,11 +3,6 @@
 import { Character } from "./character.js";
 import { Platform } from "./platform.js";
 
-//put the platforms into an array
-
-
-
-let highestY = 600;
 let platforms = [];
 
 function setup() {
@@ -15,11 +10,9 @@ function setup() {
   player = new Character();
 
   let startingPlatform = new Platform(500);
-  startingPlatform.width = 800;
+  startingPlatform.width = 400;
   startingPlatform.x = 0;
   platforms.push(startingPlatform);
-
-//initilize new platoforms with for loop
 
   astroid = new Platform();
   for (let i = 0; i < 5; i++) {
@@ -30,13 +23,6 @@ window.setup = setup;
 
 function draw() {
   background(255, 255, 255);
-
-  //checks the lowest y for player and moves the camera
-  if (player.y < highestY) {
-    highestY = player.y;
-  }
-  translate(0,height/2 - highestY);
-
   player.draw();
   player.move();
   player.update();
@@ -46,8 +32,6 @@ function draw() {
   }
 
   //jump when landing on platform
-
-  
 
   for (let platform of platforms) {
     if (player.velY > 0) {
@@ -59,26 +43,9 @@ function draw() {
       ) {
         player.velY = -15;
         console.log("collision detected");
-        
       }
     }
-
-    
-    
   }
-
-  
-
-
-
-  //camera
-  
-
-  
-
-  
-
-console.log(highestY);
 }
 window.draw = draw;
 
