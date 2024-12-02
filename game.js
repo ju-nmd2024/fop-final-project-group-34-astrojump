@@ -8,6 +8,12 @@ let platforms = [];
 function setup() {
   createCanvas(400, 600);
   player = new Character();
+
+  let startingPlatform = new Platform(500);
+  startingPlatform.width = 400;
+  startingPlatform.x = 0;
+  platforms.push(startingPlatform);
+
   astroid = new Platform();
   for (let i = 0; i < 5; i++) {
     platforms.push(new Platform(100 * i));

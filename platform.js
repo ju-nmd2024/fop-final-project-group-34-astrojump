@@ -7,7 +7,7 @@ export default class Platform {
   }
 
   draw() {
-    fill(255, 255, 0);
+    fill(random(1, 255), random(1, 255), random(1, 255));
     rect(this.x, this.y, this.width, this.height);
   }
 }
