@@ -10,6 +10,8 @@ export default class Character {
     this.gravity = 1.0;
     this.jumpForce = -10;
     this.speed = 7;
+    this.score = 0;
+  
   }
 
   // Character moves if player presses left or right arrows
@@ -44,7 +46,13 @@ export default class Character {
       this.gravity = 0;
       this.velY = 0;
     }
+
+    if
   }
+
+ 
+
+
 
   draw() {
     fill(255, 0, 0);
