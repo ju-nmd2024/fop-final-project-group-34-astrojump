@@ -26,12 +26,13 @@ function keyPressed() {
       gameState = "start";
     }
   }
-}
+} 
 
 
 
-
+//variables
 let highestY = 600;
+
 
 
 //Array for storing platforms
@@ -62,7 +63,7 @@ window.setup = setup;
 
 function draw() {
   background(255, 255, 255); 
-  
+
 
   //Start screen
   if (gameState === "start") {
@@ -81,12 +82,13 @@ function draw() {
     displayText = text("PAUSED", width / 2, height / 2);
     return;
   }
-//lose scréen
+//lose screen
   if (gameState === "lose") {
     fill(random(1, 255), random(1, 255), random(1, 255));
     textAlign(CENTER, CENTER);
     textSize(30);
     displayText = text("You died", width / 2, height / 2);
+    
     return;
   }
   
@@ -138,15 +140,18 @@ function draw() {
     gameState = "lose";
     
   }
-  console.log("player.y");
-  console.log(player.y);
 
-  console.log("highestY + 400");
-  console.log(highestY + 400);
+  //highscore calculator
+  let highScore = highestY -300;
+  highScore *= -1;
+  highScore = highScore/100;
+  highScore = Math.floor(highScore);
+  highScore = 
+  console.log(highScore);  
 }
 
 
-window.draw = draw; 
+window.draw = draw;  
 
 //Next step; put platforms in place, when u can move from platform to platform, make the screen move
 //Everytime a platform goes out of the screen, remove them. Once a platform disappears, make a new one.
