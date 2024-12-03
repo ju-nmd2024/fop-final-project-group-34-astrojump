@@ -18,6 +18,8 @@ function keyPressed() {
   }
 }
 
+
+
 let highestY = 600;
 
 
@@ -98,7 +100,8 @@ function draw() {
       ) {
         player.velY = -15;
         console.log("collision detected");
-      }
+      
+      } 
     }
   }
 }
