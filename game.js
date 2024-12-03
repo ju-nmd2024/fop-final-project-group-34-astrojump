@@ -20,6 +20,7 @@ function keyPressed() {
 
 let highestY = 600;
 
+
 //Array for storing platforms
 let platforms = [];
 
@@ -31,14 +32,19 @@ function setup() {
   let startingPlatform = new Platform(500);
   startingPlatform.width = 400;
   startingPlatform.x = 0;
+  startingPlatform.speed = 0;
   platforms.push(startingPlatform);
 
   //Stores 5 platforms in an array, each 100 pixels above the last
   astroid = new Platform();
   for (let i = 0; i < 5; i++) {
-    platforms.push(new Platform(400 - i * 100));
+    platforms.push(new Platform(400 - i * 100)); 
   }
 }
+
+
+
+
 window.setup = setup;
 
 function draw() {
@@ -65,7 +71,8 @@ function draw() {
   astroid.draw();
   
   for (let platform of platforms) {
-    platform.draw();
+    platform.draw();     
+  
   }
 
   //Removes platforms outside the visible canvas
@@ -95,6 +102,8 @@ function draw() {
     }
   }
 }
+
+
 window.draw = draw;
 
 //Next step; put platforms in place, when u can move from platform to platform, make the screen move
