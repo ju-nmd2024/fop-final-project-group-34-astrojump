@@ -35,8 +35,8 @@ function setup() {
 
   //Stores 5 platforms in an array, each 100 pixels above the last
   astroid = new Platform();
-  for (let i = 0; i < 5; i++) {
-    platforms.push(new Platform(100 * i));
+  for (let i = 0; i < 10; i++) {
+    platforms.push(new Platform(400 - i * 100));
   }
 }
 window.setup = setup;
