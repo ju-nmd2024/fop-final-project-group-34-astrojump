@@ -24,7 +24,7 @@ let highestY = 600;
 let platforms = [];
 
 function setup() {
-  createCanvas(400, 600);
+  createCanvas(400, 500);
   player = new Character();
 
   //Dimensions for the starting platform and puts it first in the platforms array
@@ -35,7 +35,7 @@ function setup() {
 
   //Stores 5 platforms in an array, each 100 pixels above the last
   astroid = new Platform();
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     platforms.push(new Platform(400 - i * 100));
   }
 }
@@ -57,7 +57,6 @@ function draw() {
   if (player.y < highestY) {
     highestY = player.y;
   }
-
   translate(0, height / 2 - highestY);
 
   player.draw();
@@ -68,6 +67,17 @@ function draw() {
   for (let platform of platforms) {
     platform.draw();
   }
+
+  //Removes platforms outside the visible canvas
+  platforms = platforms.filter(platform => platform.y < highestY + 250);
+
+  //Logic for adding new platforms above current highest
+  while (platforms.length < 6) {
+    let highestPlatformY = Math.min(...platforms.map(platform => platform.y));
+    let newPlatformY = highestPlatformY - 100;
+    platforms.push(new Platform(newPlatformY));
+  }
+
 
   //Jump when landing on platform
 
