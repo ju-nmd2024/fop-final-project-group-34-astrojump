@@ -61,7 +61,8 @@ function setup() {
 window.setup = setup;
 
 function draw() {
-  background(255, 255, 255);
+  background(255, 255, 255); 
+  
 
   //Start screen
   if (gameState === "start") {
@@ -80,7 +81,7 @@ function draw() {
     displayText = text("PAUSED", width / 2, height / 2);
     return;
   }
-
+//lose scréen
   if (gameState === "lose") {
     fill(random(1, 255), random(1, 255), random(1, 255));
     textAlign(CENTER, CENTER);
@@ -135,12 +136,17 @@ function draw() {
 
   if (highestY + 400 < player.y) {
     gameState = "lose";
+    
   }
+  console.log("player.y");
+  console.log(player.y);
 
+  console.log("highestY + 400");
+  console.log(highestY + 400);
 }
 
 
-window.draw = draw;
+window.draw = draw; 
 
 //Next step; put platforms in place, when u can move from platform to platform, make the screen move
 //Everytime a platform goes out of the screen, remove them. Once a platform disappears, make a new one.
