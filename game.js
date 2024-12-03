@@ -3,7 +3,7 @@ import { Character } from "./character.js";
 import { Platform } from "./platform.js";
 
 //Game state
-let gameState = "running";
+let gameState = "start";
 let displayText = "";
 
 
@@ -16,7 +16,18 @@ function keyPressed() {
       gameState = "running";
     }
   }
+  if (keyCode === ENTER) {
+    if (gameState === "start") {
+      gameState = "running";
+    }
+  }
+  if (keyCode === ENTER) {
+    if (gameState === "lose") {
+      gameState = "start";
+    }
+  }
 }
+
 
 
 
@@ -52,12 +63,29 @@ window.setup = setup;
 function draw() {
   background(255, 255, 255);
 
+  //Start screen
+  if (gameState === "start") {
+    fill(random(1, 255), random(1, 255), random(1, 255));
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    displayText = text('PRESS "ENTER" TO START', width / 2, height / 2);
+    return;
+  }
+
   //Shows pause message on screen and stops the other drawing logic
   if (gameState === "paused") {
     fill(random(1, 255), random(1, 255), random(1, 255));
     textAlign(CENTER, CENTER);
     textSize(32);
     displayText = text("PAUSED", width / 2, height / 2);
+    return;
+  }
+
+  if (gameState === "lose") {
+    fill(random(1, 255), random(1, 255), random(1, 255));
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    displayText = text("You died", width / 2, height / 2);
     return;
   }
   
@@ -104,6 +132,11 @@ function draw() {
       } 
     }
   }
+
+  if (highestY + 400 < player.y) {
+    gameState = "lose";
+  }
+
 }
 
 
