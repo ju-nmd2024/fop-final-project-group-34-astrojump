@@ -81,8 +81,8 @@ function setup() {
   }
   
   alien = new Enemy();
-  for (let i = 0; i < 2; i++) {
-    enemies.push(new Enemy(0 - i * 600));
+  for (let i = 0; i < 1; i++) {
+    enemies.push(new Enemy(0 - i * 650));
   }
 }
 
@@ -159,9 +159,9 @@ function draw() {
 
   enemies = enemies.filter(enemy => enemy.y < highestY + 250);
 
-  while (enemies.length < 3) {
+  while (enemies.length < 2) {
     let highestEnemyY = Math.min(...enemies.map(enemy => enemy.y));
-    let newEnemyY = highestEnemyY - 800;
+    let newEnemyY = highestEnemyY - 750;
     enemies.push(new Enemy(newEnemyY));
   }
 
@@ -181,6 +181,18 @@ function draw() {
       
       } 
     }
+  }
+
+  for (let enemy of enemies) {
+    if (
+        player.y + 25 > enemy.y &&
+        player.y < enemy.y &&
+        player.x + 10 > enemy.x &&
+        player.x < enemy.x + enemy.width
+      ) {
+        gameState = "lose";
+      
+      } 
   }
 
   if (highestY + 400 < player.y) {
