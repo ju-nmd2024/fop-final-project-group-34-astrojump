@@ -168,8 +168,12 @@ function draw() {
 
 
   //Jump when landing on platform
+  //asked chatgpt for how to properly remove platforms from the array
+  //it gave us a for loop that uses backwards iteration
 
-  for (let platform of platforms) {
+  for (let i = platforms.length - 1; i >= 0; i--) { //https://chatgpt.com/share/6750776f-89b0-8001-a075-8bcddf5e9adf
+    let platform = platforms[i];
+
     if (player.velY > 0) {
       if (
         player.y + 25 > platform.y &&
@@ -180,7 +184,8 @@ function draw() {
         player.velY = -15;
         console.log("collision detected");
         if (platform.breakable === true) {
-          platforms.splice(2,1);
+          platforms.splice(i, 1);
+          console.log("breakable platform removed");
         }
       
       } 
@@ -211,7 +216,6 @@ function draw() {
   highScore = Math.floor(highScore);
   highScore = 
   console.log(highScore);  
-
 }
 
 
