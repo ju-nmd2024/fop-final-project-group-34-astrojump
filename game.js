@@ -99,7 +99,12 @@ function draw() {
   let highScore = highestY -300;
   let dispHigh = highScore.toString();
 
- 
+  if (gameState === "running") {
+    fill(random(1, 255), random(1, 255), random(1, 255));
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    displayText = text(dispHigh *= -1, width / 2, height / 6);
+ }
 
   //Start screen
   if (gameState === "start") {
