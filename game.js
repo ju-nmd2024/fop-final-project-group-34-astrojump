@@ -7,6 +7,7 @@ let gameState = "start";
 let displayText = "";
 
 
+
 //Checks if player presses ESCAPE key if so game is paused
 function keyPressed() {
   if (keyCode === ESCAPE) {
@@ -19,10 +20,8 @@ function keyPressed() {
   if (keyCode === ENTER) {
     if (gameState === "start") {
       gameState = "running";
-    }
-  }
-  if (keyCode === ENTER) {
-    if (gameState === "lose") {
+    } else if (gameState === "lose") {
+      resetGame();
       gameState = "start";
     }
   }
@@ -37,6 +36,24 @@ let highestY = 600;
 
 //Array for storing platforms
 let platforms = [];
+
+function resetGame() {  
+  player.y = 300;
+  player.velY = 0;
+
+  highestY = 600;
+
+  platforms = [];
+  let startingPlatform = new Platform(500);
+  startingPlatform.width = 400;
+  startingPlatform.x = 0;
+  startingPlatform.speed = 0;
+  platforms.push(startingPlatform);
+
+  for (let i = 0; i < 5; i++) {
+    platforms.push(new Platform(400 - i * 100));
+  }
+}
 
 function setup() {
   createCanvas(400, 500);
@@ -66,6 +83,9 @@ window.setup = setup;
 function draw() {
   background(255, 255, 255); 
 
+  let highScore = highestY -300;
+  let dispHigh = highScore.toString();
+
 
   //Start screen
   if (gameState === "start") {
@@ -89,7 +109,7 @@ function draw() {
     fill(random(1, 255), random(1, 255), random(1, 255));
     textAlign(CENTER, CENTER);
     textSize(30);
-    displayText = text("You died", width / 2, height / 2);
+    displayText = text("You died. Score:" + " " + dispHigh*-1, width / 2, height / 2);
     
     return;
   }
@@ -144,12 +164,13 @@ function draw() {
   }
 
   //highscore calculator
-  let highScore = highestY -300;
+  
   highScore *= -1;
   highScore = highScore/100;
   highScore = Math.floor(highScore);
   highScore = 
   console.log(highScore);  
+
 }
 
 
