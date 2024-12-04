@@ -57,7 +57,9 @@ function setup() {
 }
 
 
-
+//Code currently keeps player position after death which makes it so that
+//when you restart the game instantly sees your position as dead setting
+//the game to "lose" state
 
 window.setup = setup;
 
