@@ -17,5 +17,7 @@ export default class Enemy {
         } else if (this.x + this.width < 0) {
           this.speed *= -1;
         }
+
+        ellipse(this.x, this.y, this.width, this.height);
     }
 }

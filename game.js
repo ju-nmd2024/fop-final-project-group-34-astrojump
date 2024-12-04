@@ -1,6 +1,7 @@
 //Import modules
 import { Character } from "./character.js";
 import { Platform } from "./platform.js";
+import { Enemy } from "./enemy.js";
 
 //Game state
 let gameState = "start";
@@ -36,6 +37,7 @@ let highestY = 600;
 
 //Array for storing platforms
 let platforms = [];
+let enemies = [];
 
 function resetGame() {  
   player.y = 300;
@@ -52,6 +54,12 @@ function resetGame() {
 
   for (let i = 0; i < 5; i++) {
     platforms.push(new Platform(400 - i * 100));
+  }
+
+  enemies = [];
+  
+  for (let i = 0; i < 2; i++) {
+    enemies.push(new Enemy(0 - i * 600));
   }
 }
 
@@ -70,6 +78,11 @@ function setup() {
   astroid = new Platform();
   for (let i = 0; i < 5; i++) {
     platforms.push(new Platform(400 - i * 100)); 
+  }
+  
+  alien = new Enemy();
+  for (let i = 0; i < 2; i++) {
+    enemies.push(new Enemy(0 - i * 600));
   }
 }
 
@@ -124,10 +137,10 @@ function draw() {
   player.move();
   player.update();
   astroid.draw();
+  alien.draw();
   
   for (let platform of platforms) {
     platform.draw();     
-  
   }
 
   //Removes platforms outside the visible canvas
@@ -138,6 +151,18 @@ function draw() {
     let highestPlatformY = Math.min(...platforms.map(platform => platform.y));
     let newPlatformY = highestPlatformY - 100;
     platforms.push(new Platform(newPlatformY));
+  }
+
+  for (let enemy of enemies ) {
+    enemy.draw();
+  }
+
+  enemies = enemies.filter(enemy => enemy.y < highestY + 250);
+
+  while (enemies.length < 3) {
+    let highestEnemyY = Math.min(...enemies.map(enemy => enemy.y));
+    let newEnemyY = highestEnemyY - 800;
+    enemies.push(new Enemy(newEnemyY));
   }
 
 
