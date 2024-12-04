@@ -41,7 +41,7 @@ export default class Platform {
     }
 
     if (this.breakable === true) {
-      this.red = 0;
+      this.blue = 255;
     }
 
 

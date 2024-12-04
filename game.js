@@ -99,6 +99,7 @@ function draw() {
   let highScore = highestY -300;
   let dispHigh = highScore.toString();
 
+ 
 
   //Start screen
   if (gameState === "start") {
@@ -178,6 +179,9 @@ function draw() {
       ) {
         player.velY = -15;
         console.log("collision detected");
+        if (platform.breakable === true) {
+          platforms.splice(2,1);
+        }
       
       } 
     }
