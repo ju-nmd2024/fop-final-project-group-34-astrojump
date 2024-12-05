@@ -10,6 +10,7 @@ let displayText = "";
 
 function keyPressed() {
   if (keyIsDown(ESCAPE)) {
+    console.log("HEJ");
     if (gameState === "running") {
       gameState = "paused";
     } else if (gameState === "paused") {
@@ -47,6 +48,7 @@ function resetGame() {
   startingPlatform.width = 400;
   startingPlatform.x = 0;
   startingPlatform.speed = 0;
+  startingPlatform.breakable = false;
   platforms.push(startingPlatform);
 
   for (let i = 0; i < 5; i++) {
@@ -69,6 +71,7 @@ function setup() {
   startingPlatform.width = 400;
   startingPlatform.x = 0;
   startingPlatform.speed = 0;
+  startingPlatform.breakable = false;
   platforms.push(startingPlatform);
 
   //Stores 5 platforms in an array, each 100 pixels above the last
@@ -92,16 +95,16 @@ window.setup = setup;
 function draw() {
   background(255, 255, 255);
 
-  let highScore = highestY - 300;
-  let dispHigh = highScore.toString();
-
-  if (keyIsDown(ESCAPE)) {
-    if (gameState === "running") {
-      gameState = "paused";
-    } else if (gameState === "paused") {
-      gameState = "running";
-    }
+  if (keyIsPressed && keyCode === ESCAPE && gameState === "running") {
+    console.log("HEJ");
+    gameState = "paused";
   }
+
+  if (keyIsPressed && keyCode === ESCAPE && gameState === "paused") {
+    console.log("HEJ");
+    gameState = "running";
+  }
+
   if (keyIsDown(ENTER)) {
     if (gameState === "start") {
       gameState = "running";
@@ -110,6 +113,9 @@ function draw() {
       gameState = "start";
     }
   }
+
+  let highScore = highestY - 300;
+  let dispHigh = highScore.toString();
 
   if (gameState === "running") {
     fill(random(1, 255), random(1, 255), random(1, 255));
@@ -223,7 +229,7 @@ function draw() {
     }
   }
 
-  if (highestY + 400 < player.y) {
+  if (highestY + 300 < player.y) {
     gameState = "lose";
   }
 
@@ -232,7 +238,6 @@ function draw() {
   highScore *= -1;
   highScore = highScore / 100;
   highScore = Math.floor(highScore);
-  highScore = console.log(highScore);
 }
 
 window.draw = draw;
