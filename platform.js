@@ -8,24 +8,18 @@ export default class Platform {
     this.blue = 0;
     this.green = 0;
 
-
     if (random() < 0.1) {
       this.breakable = true;
     } else {
-      (this.breakable) = false;
+      this.breakable = false;
     }
-
 
     if (random() < 0.5) {
-      this.speed = random([-2,2]);
+      this.speed = random([-2, 2]);
     } else {
-      (this.speed) = 0;
+      this.speed = 0;
     }
   }
-  
-
-  
-
 
   draw() {
     this.x += this.speed;
@@ -44,10 +38,7 @@ export default class Platform {
       this.blue = 255;
     }
 
-
     fill(this.red, this.green, this.blue);
     rect(this.x, this.y, this.width, this.height);
-
-    
   }
 }

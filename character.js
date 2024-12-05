@@ -7,9 +7,9 @@ export default class Character {
 
     this.velX = 0;
     this.velY = 0;
-    this.gravity = 1.0;
-    this.jumpForce = -10;
-    this.speed = 7;
+    this.gravity = 0.5;
+    this.jumpForce = -5;
+    this.speed = 3;
   }
 
   // Character moves if player presses left or right arrows
