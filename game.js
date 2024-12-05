@@ -88,7 +88,10 @@ function draw() {
   if (keyCode === ENTER) {
     if (gameState === "start") {
       gameState = "running";
-    } else if (gameState === "lose") {
+    }
+  }
+  if (keyCode === 32) {
+    if (gameState === "lose") {
       resetGame();
       gameState = "start";
     }
@@ -112,7 +115,7 @@ function draw() {
     fill(random(1, 255), random(1, 255), random(1, 255));
     textAlign(CENTER, CENTER);
     textSize(30);
-    displayText = text('PRESS "ENTER" TO START', width / 2, height / 2);
+    displayText = text("PRESS ENTER TO START", width / 2, height / 2);
     textSize(50);
     instruction = text("ASTROJUMP", width / 2, height / 2 - 100);
     return;
@@ -124,7 +127,7 @@ function draw() {
     textAlign(CENTER, CENTER);
     textSize(32);
     displayText = text("PAUSED", width / 2, height / 2 - 100);
-    instruction = text("Press ENTER to resume", width / 2, height / 2);
+    instruction = text("Press ENTER To Resume", width / 2, height / 2);
     return;
   }
   //lose screen
@@ -133,10 +136,11 @@ function draw() {
     textAlign(CENTER, CENTER);
     textSize(30);
     displayText = text(
-      "You died. Score:" + " " + dispHigh * -1,
+      "You died! Score:" + " " + dispHigh * -1,
       width / 2,
       height / 2
     );
+    instruction = text("Press SPACE To Continue", width / 2, height / 2 + 50);
 
     return;
   }
