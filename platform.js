@@ -30,12 +30,16 @@ export default class Platform {
     }
 
     //color
-    if (this.red < 255) {
+    if (this.red < 125) {
       this.red += 5;
+      this.blue += 5;
+      this.green += 5;
     }
 
     if (this.breakable === true) {
-      this.blue = 255;
+      this.blue = 70;
+      this.red = 70;
+      this.green = 70;
     }
 
     fill(this.red, this.green, this.blue);

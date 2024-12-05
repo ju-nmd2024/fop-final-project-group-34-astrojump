@@ -5,27 +5,9 @@ import Enemy from "./enemy.js";
 //Game state
 let gameState = "start";
 let displayText = "";
+let instruction = "";
 
 //Checks if player presses ESCAPE key if so game is paused
-
-function keyPressed() {
-  if (keyIsDown(ESCAPE)) {
-    console.log("HEJ");
-    if (gameState === "running") {
-      gameState = "paused";
-    } else if (gameState === "paused") {
-      gameState = "running";
-    }
-  }
-  if (keyIsDown(ENTER)) {
-    if (gameState === "start") {
-      gameState = "running";
-    } else if (gameState === "lose") {
-      resetGame();
-      gameState = "start";
-    }
-  }
-}
 
 //variables
 let highestY = 600;
@@ -93,19 +75,17 @@ function setup() {
 window.setup = setup;
 
 function draw() {
-  background(255, 255, 255);
+  background(0, 0, 0);
 
   if (keyIsPressed && keyCode === ESCAPE && gameState === "running") {
-    console.log("HEJ");
+    console.log("123");
     gameState = "paused";
   }
-
-  if (keyIsPressed && keyCode === ESCAPE && gameState === "paused") {
-    console.log("HEJ");
+  if (keyIsPressed && keyCode === ENTER && gameState === "paused") {
     gameState = "running";
   }
 
-  if (keyIsDown(ENTER)) {
+  if (keyCode === ENTER) {
     if (gameState === "start") {
       gameState = "running";
     } else if (gameState === "lose") {
@@ -122,6 +102,9 @@ function draw() {
     textAlign(CENTER, CENTER);
     textSize(30);
     displayText = text((dispHigh *= -1), width / 2, height / 6);
+    fill(255, 255, 255);
+    textSize(10);
+    instruction = text("ESC to pause", width / 2 - 160, height / 6 - 75);
   }
 
   //Start screen
@@ -139,6 +122,7 @@ function draw() {
     textAlign(CENTER, CENTER);
     textSize(32);
     displayText = text("PAUSED", width / 2, height / 2);
+    instruction = text("Press ENTER to resume", width / 2, height / 2 + 100);
     return;
   }
   //lose screen

@@ -8,6 +8,9 @@ export default class Enemy {
     this.blue = 0;
     this.green = 0;
     this.speed = random([-2, 2]);
+    this.red = 0;
+    this.green = 0;
+    this.blue = 0;
   }
 
   draw() {
@@ -18,6 +21,12 @@ export default class Enemy {
       this.speed *= -1;
     }
 
+    //color
+
+    if (this.red < 255) {
+      this.green += 1;
+    }
+    fill(this.red, this.green, this.blue);
     ellipse(this.x, this.y, this.width, this.height);
   }
 }

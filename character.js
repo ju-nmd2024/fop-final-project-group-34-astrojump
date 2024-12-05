@@ -47,7 +47,7 @@ export default class Character {
   }
 
   draw() {
-    fill(255, 0, 0);
+    fill(255, 255, 255);
     ellipse(this.x, this.y, this.width, this.height);
   }
 }
