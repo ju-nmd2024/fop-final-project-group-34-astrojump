@@ -9,7 +9,7 @@ export default class Enemy {
     this.green = 0;
     this.speed = random([-2, 2]);
     this.red = 0;
-    this.green = 0;
+    this.green = 255;
     this.blue = 0;
   }
 
@@ -22,11 +22,9 @@ export default class Enemy {
     }
 
     //color
-
-    if (this.red < 255) {
-      this.green += 1;
-    }
     fill(this.red, this.green, this.blue);
     ellipse(this.x, this.y, this.width, this.height);
+    fill(60, 60, 200);
+    ellipse(this.x, this.y - 5, this.width - 30, this.height - 30);
   }
 }

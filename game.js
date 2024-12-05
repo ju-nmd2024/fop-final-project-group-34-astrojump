@@ -113,6 +113,8 @@ function draw() {
     textAlign(CENTER, CENTER);
     textSize(30);
     displayText = text('PRESS "ENTER" TO START', width / 2, height / 2);
+    textSize(50);
+    instruction = text("ASTROJUMP", width / 2, height / 2 - 100);
     return;
   }
 
@@ -121,8 +123,8 @@ function draw() {
     fill(random(1, 255), random(1, 255), random(1, 255));
     textAlign(CENTER, CENTER);
     textSize(32);
-    displayText = text("PAUSED", width / 2, height / 2);
-    instruction = text("Press ENTER to resume", width / 2, height / 2 + 100);
+    displayText = text("PAUSED", width / 2, height / 2 - 100);
+    instruction = text("Press ENTER to resume", width / 2, height / 2);
     return;
   }
   //lose screen

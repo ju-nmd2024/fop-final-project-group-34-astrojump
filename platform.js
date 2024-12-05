@@ -7,6 +7,8 @@ export default class Platform {
     this.red = 0;
     this.blue = 0;
     this.green = 0;
+    this.dotPos1 = random(20, 50);
+    this.dotPos2 = random(70, 100);
 
     if (random() < 0.1) {
       this.breakable = true;
